@@ -6,22 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" referrerpolicy="no-referrer" />
 </head>
 
 <body>
     <div class="container">
-        <h1 class="title">All Notes</h1>
-        <div class="notes">
-            <div class="note">
-                <a>
-                    <i class="far fa-sticky-note"></i>
-                </a>
-                <div class="note-title">
-                    <h1>title</h1>
-                </div>
-            </div>
+        <div class="header">
+            <h1 class="title">All Notes</h1>
+            <a class="btn" href="/create"><i class="far fa-plus-square"></i></a>
+        </div>
+        <div class="content">
+            <% notes.forEach(function(note) { %>
+                <form action="/notes/<%= note._id %>" method="POST">
+                    <a href="/notes/<%= note._id %>" class="item">
+                        <i class="far fa-sticky-note"></i>
+                        <div class="note-title">
+                            <h2>
+                                <%= note.title %>
+                            </h2>
+                        </div>
+                        <button type="submit"><i class="fas fa-times"></i></button>
+                    </a>
+                </form>
+                <% }) %>
         </div>
     </div>
 </body>

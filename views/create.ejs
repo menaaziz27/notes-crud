@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Note</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Create Note</h1>
+            <a class="btn" href="/"><i class="fas fa-arrow-left"></i></a>
+        </div>
+        <div class="content">
+            <form action="/" method="POST">
+                <div class="form">
+                    <label for="title">Title</label>
+                    <input type="text" name="title">
+                </div>
+                <div class="form">
+                    <label for="title">Content</label>
+                    <textarea type="text" name="content" rows="4" cols="50"></textarea>
+                </div>
+                <div class="buttons">
+                    <a class="btn" href="/">back</a>
+                    <button type="submit">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
