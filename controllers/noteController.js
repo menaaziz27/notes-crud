@@ -1,5 +1,6 @@
 const Note = require('../models/Note');
 const { validationResult } = require('express-validator');
+
 exports.getNotes = async (req, res, next) => {
 	try {
 		const notes = await Note.find({});
@@ -47,6 +48,35 @@ exports.createNote = async (req, res, next) => {
 		const note = await new Note({ title, content });
 		await note.save();
 		res.redirect('/');
+	} catch (e) {
+		if (!e.statusCode) {
+			e.statusCode = 500;
+		}
+		next(e);
+	}
+};
+
+exports.updateNote = async (req, res, next) => {
+	try {
+		const { title, content, id } = req.body;
+		const errors = validationResult(req);
+		if (!errors.isEmpty()) {
+			let error = new Error('validation error');
+			error.statusCode = 422;
+			throw error;
+		}
+
+		const note = await Note.findOneAndUpdate(
+			{ _id: id },
+			{
+				title,
+				content,
+			},
+			{
+				new: true,
+			}
+		);
+		res.json(note);
 	} catch (e) {
 		if (!e.statusCode) {
 			e.statusCode = 500;

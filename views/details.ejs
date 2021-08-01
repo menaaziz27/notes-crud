@@ -8,6 +8,7 @@
     <title>Note Details</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -18,15 +19,45 @@
         </div>
         <div class="content">
             <div class="form">
-                <h1>
+                <h1 id="note-title" contentEditable="true">
                     <%= note.title %>
                 </h1>
-                <h1>
+                <h1 id="note-content" contentEditable="true">
                     <%= note.content %>
                 </h1>
+                <input id="noteId" type="hidden" name="noteId" value="<%= note._id %>">
             </div>
+            <a href="/" class="backBtn">BACK</a>
+            <button class="updateBtn">UPDATE</button>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $('.updateBtn').on('click', function(e) {
+                e.preventDefault();
+                const title = $('#note-title').text().trim();
+                const content = $('#note-content').text().trim();
+                const noteId = $('#noteId').val();
+                const data = {
+                    title,
+                    content,
+                    id: noteId
+                };
+
+                console.log(data);
+                $.ajax({
+                    url: `/notes/${noteId}`,
+                    type: 'PUT',
+                    data: data,
+                    success: (note) => {
+                        console.log('updated');
+                        window.location = '/';
+                    }
+                })
+            })
+        })
+    </script>
 </body>
 
 </html>
