@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -10,7 +11,7 @@ body {
     align-items: center;
     height: 100vh;
     font-size: 16px;
-    font-family: sans-serif;
+    font-family: 'Acme', sans-serif;
 }
 
 .container {
@@ -51,6 +52,7 @@ body {
 
 .title {
     padding-top: 16px;
+    margin-left: 6px;
     border-bottom: 4px solid rgb(123, 60, 160);
 }
 
@@ -103,6 +105,25 @@ body {
 .item>div {
     padding: 0 0 0 5px;
     margin: 0 0 0 5px;
+}
+
+button {
+    background-color: inherit;
+    color: rgb(123, 60, 160);
+    outline: none;
+    font-family: inherit;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 10px;
+    border: none;
+    padding: 3px;
+    border: 1px solid rgb(123, 60, 160);
+    border-radius: 3px;
+}
+
+a {
+    font-size: 1.2rem;
+    text-decoration: none;
 }
 
 .item button {
